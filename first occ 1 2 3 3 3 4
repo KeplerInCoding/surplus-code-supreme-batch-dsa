@@ -14,7 +14,7 @@ int firstOcc(vector<int> arr, int target) {
       //ans store
       ans = mid;
       //left search
-      e = mid - 1;
+      e = mid - 1;   // s = mid + 1; for last occ
     }
     else if(target < arr[mid] ) {
       //left me search
