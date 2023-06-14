@@ -24,7 +24,7 @@ int dup(vector <int> arr, int n)
         }
         else 
         {
-            if(mid-1>s && arr[mid]==arr[mid-1])
+            if(mid-1>=s && arr[mid]==arr[mid-1])
             s=mid+1;
 
             else
