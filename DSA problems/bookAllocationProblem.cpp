@@ -1,3 +1,4 @@
+//book allocation problem on gfg
 bool isPossible(int A[], int max, int M, int N){
     int sum = 0;
     int count = 1;
