@@ -13,7 +13,7 @@ int piv(vector <int> arr)
         return arr[s];
         if(arr[mid]>arr[mid+1])
         return arr[mid];
-        if(mid-1>0 && arr[mid-1]>arr[mid])
+        if(mid-1>=0 && arr[mid-1]>arr[mid])
         return arr[mid-1];
         if(arr[s]>arr[mid])
         e=mid-1;
