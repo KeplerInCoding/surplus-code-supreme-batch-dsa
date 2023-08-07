@@ -22,3 +22,31 @@
 
     
 // };
+
+
+
+class Solution {
+public:
+    int expand(string s, int start, int end){
+        int count = 0;
+        while(start>=0 && end<s.length() && s[start]==s[end]){
+            start--;
+            end++;
+            count++;
+            
+        }
+        return count;
+    }
+    int countSubstrings(string s) {
+        int l = s.length();
+        int count = 0;
+        for(int i = 0; i<l; i++){
+            count = count + expand(s, i, i);
+            count = count + expand(s, i, i+1);
+
+        }
+        return count;
+    }
+
+    
+};
