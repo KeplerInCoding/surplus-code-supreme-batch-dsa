@@ -62,10 +62,12 @@ void map(vector <vector <int>>& maze, int i, int j, vector <char>& route){
 }
 
 int main() {
-  vector <vector <int>> maze{{1, 0, 0, 0}, {1, 1, 0, 0}, {1, 1, 0, 0}, {0, 1, 1, 1}};
+  vector <vector <int>> maze{{1, 0, 0, 0}, {1, 1, 0, 1}, {1, 1, 0, 0}, {0, 1, 1, 1}};
   vector <char> route;
   int i = 0; 
   int j = 0;
+  if(maze[i][j]==0 ||(maze[maze.size()-1][maze.size()-1]==0)) return  0;
+  
   cout<<"the route is : "<<endl;
   map(maze, i, j, route);
 
