@@ -1,4 +1,6 @@
-//easy
+//medium
+
+
 
 /**
  * Definition for singly-linked list.
@@ -10,7 +12,22 @@
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
-ListNode* merge(ListNode* left, ListNode* right){
+
+
+class Solution {
+public:
+
+    ListNode* findMid(ListNode* head){
+        ListNode *fast=head, *slow=head;
+        while(fast->next && fast->next->next){
+            fast=fast->next->next;
+            slow=slow->next;
+        }
+        return slow;
+    }
+
+
+    ListNode* merge(ListNode* left, ListNode* right){
         if(!left) return right;
         if(!right) return left;
 
@@ -57,3 +74,28 @@ ListNode* merge(ListNode* left, ListNode* right){
 
         return head;
     }
+
+    
+
+
+    ListNode* sortList(ListNode* head) {
+        if(!head || !head->next) return head;
+
+        //get mid and split
+        ListNode *mid = findMid(head);
+        ListNode *left = head;
+        ListNode *right = mid->next;
+        mid->next = NULL;
+
+        //sort left-right
+        left = sortList(left);
+        right = sortList(right);
+
+
+        //merge left-right
+        head = merge(left, right);
+
+        return head;
+        
+    }
+};
