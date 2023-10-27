@@ -4,6 +4,17 @@ using namespace std;
 
 //50 
 //20
+void insertAtBottom(stack <int>& s, int temp){
+  if(s.empty()){
+    s.push(temp);
+    return;
+  }
+  int t = s.top();
+  s.pop();
+  insertAtBottom(s, temp);
+  s.push(t);
+  
+}
 
 void insertSorted(stack <int>& s, int temp){
   if(s.empty()) {
@@ -28,7 +39,7 @@ void reverseStack(stack <int>& s){
 
   reverseStack(s);
 
-  insertSorted(s, temp);
+  insertAtBottom(s, temp);
 
 }
 
