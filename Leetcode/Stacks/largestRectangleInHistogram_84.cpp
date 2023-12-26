@@ -1,43 +1,3 @@
-//hard
-
-//TLE
-
-// class Solution {
-// public:
-
-//     int findMax(vector <int>& ht, bool &flag, int &h){
-//         int len = 0;
-//         int maxH = 0;
-//         for(int i=0; i<ht.size(); i++){
-//             if(ht[i]>=h) len = len+h;
-//             else{
-//                 maxH = max(maxH, len);
-//                 len = 0;
-//             } 
-//         }
-//         maxH = max(maxH, len);
-//         if(maxH==0){
-//             flag = false;
-            
-//         }
-//         return maxH;
-//     }
-
-//     int largestRectangleArea(vector<int>& ht) {
-//         int maxi = 0;
-//         bool flag = true;
-//         int i=1;
-//         while(flag){
-//             maxi=max(maxi, findMax(ht, flag, i));
-//             i++;
-//         }
-        
-//         return maxi;
-//     }
-// };
-
-
-
 class Solution {
 public:
 
@@ -100,5 +60,28 @@ public:
         }
         // cout << maxH;
         return maxH;
+    }
+
+    int maximalRectangle(vector<vector<char>>& matrix) {
+        int m = matrix.size();
+        int n = matrix[0].size();
+        vector <vector<int>> v;
+        for(int i=0; i<m; i++){
+            vector <int> t;
+            for(int j=0; j<n; j++){
+                t.push_back(matrix[i][j]-'0');
+            }
+            v.push_back(t);
+        }
+        
+        int area = largestRectangleArea(v[0]);
+        for(int i=1; i<m; i++){
+            for(int j=0; j<n; j++){
+                if(v[i][j]) v[i][j]=v[i-1][j]+v[i][j];
+                else v[i][j]=0;
+            }
+            area=max(area, largestRectangleArea(v[i]));
+        }
+        return area;
     }
 };
