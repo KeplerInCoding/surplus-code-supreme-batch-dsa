@@ -3,6 +3,8 @@
         "vector": "cpp",
         "xutility": "cpp",
         "iostream": "cpp",
-        "atomic": "cpp"
+        "atomic": "cpp",
+        "queue": "cpp",
+        "stack": "cpp"
     }
 }
