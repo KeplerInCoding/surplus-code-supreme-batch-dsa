@@ -1,0 +1,124 @@
+
+  //recursion - TOP DOWN
+    // int minimumEnergy(vector<int>& height, int N) {
+    //     // Code here
+    //   int n=N-1;
+    //   if(n==0) return 0;
+    //   if(n==1) return abs(height[0]-height[1]);
+      
+    //   int x = minimumEnergy(height, N-2);
+    //   int y = minimumEnergy(height, N-1);
+      
+    //   int energy = min(x+abs(height[n-2]-height[n]), y+abs(height[n-1]-height[n]));
+      
+    //   return energy;
+    // }
+    
+    
+    
+    //recursion - BOTTOM UP
+    
+//     void getEnergy(vector<int>& height, int &n, int i, int &mini, int sum){
+//       if(i>=n-1){
+//           mini = min(mini, sum);
+//           return;
+//       }
+      
+//       if(i<n-1)getEnergy(height, n, i+1, mini, sum+abs(height[i]-height[i+1]));
+//       if(i<n-2)getEnergy(height, n, i+2, mini, sum+abs(height[i]-height[i+2]));
+//   }
+
+
+    //DP -  TOP DOWN
+    
+    // int getEnergy(vector<int>& height, int N, vector<int> &dp) {
+    //     // Code here
+    //   int n=N-1;
+    //   if(n==0) return 0;
+    //   if(n==1) return abs(height[0]-height[1]);
+      
+    //   if(dp[n]!=-1) return dp[n];
+      
+    //   int x = getEnergy(height, N-2, dp);
+    //   int y = getEnergy(height, N-1, dp);
+      
+    //   dp[n] = min(x+abs(height[n-2]-height[n]), y+abs(height[n-1]-height[n]));
+      
+    //   return dp[n];
+    // }
+    
+    
+    // int minimumEnergy(vector<int>& height, int n) {
+    //     vector<int>dp(n, -1);
+        
+    //     return getEnergy(height, n, dp);
+    // }
+    
+    
+    //DP -  BOTTOM UP
+    
+    // int minimumEnergy(vector<int>& height, int N) {
+    //     vector<int>dp(N, -1);
+        
+    //     int n=N-1;
+    //     if(n==0) return 0;
+    //     if(n==1) return abs(height[0]-height[1]);
+        
+    //     dp[0]=0;
+    //     dp[1]=abs(height[0]-height[1]);
+        
+    //     for(int i=2; i<N; i++){
+    //         dp[i]=min(dp[i-2]+abs(height[i-2]-height[i]), dp[i-1]+abs(height[i-1]-height[i]));
+    //     }
+    //     return dp[n];
+    // }
+    
+    //DP - SPACE OPTIMISATION
+    
+    int minimumEnergy(vector<int>& height, int N) {
+        int n=N-1;
+        if(n==0) return 0;
+        if(n==1) return abs(height[0]-height[1]);
+        
+        int a=0;
+        int b=abs(height[0]-height[1]);
+        int ans;
+        
+        for(int i=2; i<N; i++){
+            ans=min(a+abs(height[i-2]-height[i]), b+abs(height[i-1]-height[i]));
+            a=b;
+            b=ans;
+        }
+        return ans;
+    }
+    
+    
+    
+
+
+
+
+
+
+
+
+//   void getEnergy(vector<int>& height, int &n, int i, int &mini, int sum){
+//       if(i>=n-1){
+//           mini = min(mini, sum);
+//           return;
+//       }
+      
+//       if(i<n-1)getEnergy(height, n, i+1, mini, sum+abs(height[i]-height[i+1]));
+//       if(i<n-2)getEnergy(height, n, i+2, mini, sum+abs(height[i]-height[i+2]));
+//   }
+  
+  
+  
+//     int minimumEnergy(vector<int>& height, int n) {
+//         // Code here
+//         int mini = INT_MAX;
+        
+//         getEnergy(height, n, 0, mini, 0);
+        
+//         return mini;
+//     }

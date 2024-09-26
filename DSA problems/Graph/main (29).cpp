@@ -73,7 +73,10 @@ class graph {
 		
 	}
 
+//TopoSort to traverse th directed path
 
+//in DFS, we use stack and visied vector
+//in BFS we use Kanh's Algo - indgree in place of visited vector
 	void topoSortDfs(int src, unordered_map<int, bool>& visited, stack<int>& ans) {
 		
 		visited[src] = true;
